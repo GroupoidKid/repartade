@@ -16,8 +16,22 @@ teachersList = [cb, mc, cg, nr, sr, jpr, pv, bmp]
 
 r = Repart(teachersList)
 
-r.addClass("2GT1", 4)
-r.addClass("2GT1 AP", 1)
+for i in range(1, 7):
+    r.addClass("2GT{}".format(i), 4)
+    r.addClass("2GT{} AP".format(i), 1)
+
+r.addConstraint(lambda x: x.name == "CG",  ("2GT1",))
+r.addConstraint(lambda x: x.name == "CG",  ("2GT1 AP",))
+r.addConstraint(lambda x: x.name == "JPR", ("2GT2",))
+r.addConstraint(lambda x: x.name == "JPR", ("2GT2 AP",))
+r.addConstraint(lambda x: x.name == "JPR", ("2GT3",))
+r.addConstraint(lambda x: x.name == "JPR", ("2GT3 AP",))
+r.addConstraint(lambda x: x.name == "MC",  ("2GT4",))
+r.addConstraint(lambda x: x.name == "MC",  ("2GT4 AP",))
+r.addConstraint(lambda x: x.name == "CB",  ("2GT5",))
+r.addConstraint(lambda x: x.name == "CB",  ("2GT5 AP",))
+r.addConstraint(lambda x: x.name == "SR",  ("2GT6",))
+r.addConstraint(lambda x: x.name == "SR",  ("2GT6 AP",))
 
 #r.addConstraint(
 r.prettySolutions()
