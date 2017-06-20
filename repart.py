@@ -19,7 +19,7 @@ class Teacher:
 
 class Repart(constraint.Problem):
     """Problem about teachers dispatching"""
-    
+
     timeAmount = {}
 
     def __init__(self, teachersList):
