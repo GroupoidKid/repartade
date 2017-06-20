@@ -62,5 +62,5 @@ r.addConstraint(lambda x: x.name == "CB",  ("2GT5 AP",))
 r.addConstraint(lambda x: x.name == "SR",  ("2GT6",))
 r.addConstraint(lambda x: x.name == "SR",  ("2GT6 AP",))
 
-#r.addConstraint(
+r.addConstraint(r.totalTimeOK, r.variables)
 r.prettySolutions()

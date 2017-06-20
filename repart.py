@@ -21,13 +21,24 @@ class Repart(constraint.Problem):
     """Problem about teachers dispatching"""
 
     timeAmount = {}
+    variables = []
 
     def __init__(self, teachersList):
         super().__init__()
         self.teachersList = teachersList
 
+    def totalTimeOK(self, *x):
+        for t in self.teachersList:
+            t.time = 0
+        for c, t in zip(self.variables, x):
+            t.time += self.timeAmount[c]
+        for t in self.teachersList:
+            if not t.mini <= t.time <= t.maxi:
+                return False
+        return True
 
     def addClass(self, name, time):
+        self.variables.append(name)
         self.addVariable(name, self.teachersList)
         self.timeAmount[name] = time
 
