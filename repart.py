@@ -17,6 +17,11 @@ class Teacher:
     def __repr__(self):
         return self.name
 
+
+# Objective:
+# Repart may be considered a map from {Classes} to {Teachers}
+# The objective si to build up such a map with extra constraints
+
 class Repart(constraint.Problem):
     """Problem about teachers dispatching"""
 
@@ -38,9 +43,9 @@ class Repart(constraint.Problem):
         return True
 
     def addClass(self, name, time):
-        self.variables.append(name)
+        self.variables.append(name)  # r.variables = {Classes}
         self.addVariable(name, self.teachersList)
-        self.timeAmount[name] = time
+        self.timeAmount[name] = time  # timeAmount ob = {Class.name=>Class.hours}
 
     def prettySolutions(self):
         for s in self.getSolutions():
